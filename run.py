@@ -60,10 +60,16 @@ def extract_highlights(highlights_file, chapter_locations):
 
     return output_text
 
+def text_to_file(text, file):
+    with open(file, 'w') as f:
+        f.write(text)
+    print(f'notes succesfully store in file: {file}')
+
 if __name__ == '__main__':
+    print('formatting csv notes to txt...')
     highlights_file = sys.argv[1]
     output_file = sys.argv[2]
     chapter_locations_file = sys.argv[3]
     chapter_locations = load_chapter_locations(chapter_locations_file)
     highlights_text = extract_highlights(highlights_file, chapter_locations)
-    print(highlights_text)
+    text_to_file(highlights_text, output_file)
