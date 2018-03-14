@@ -103,3 +103,4 @@ ENV/
 ### IGNORE INPUT AND OUTPUT FILES ###
 *.txt
 *.csv
+*.json
