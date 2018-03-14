@@ -7,7 +7,7 @@ def chapter_locations_from_input():
 
     it will keep on asking for input until you type in 'q'
     """
-    chapter_locations = {}
+    chapter_locations = []
     while True:
         print('register new chapter-location mapping')
         chapter_name = input('chapter name: ')
@@ -17,7 +17,7 @@ def chapter_locations_from_input():
         if location == 'q':
             break
 
-        chapter_locations[location] = chapter_name
+        chapter_locations.append({'chapter': chapter_name, 'location': location})
         print('chapter-location mapping registered')
 
     return chapter_locations
