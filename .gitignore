@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+### IGNORE INPUT AND OUTPUT FILES ###
+*.txt
+*.csv
