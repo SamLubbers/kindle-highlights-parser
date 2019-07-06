@@ -5,24 +5,20 @@ import json
 import sys
 import re
 
-start_line = 9
+start_line = 8
 
 column_annotation_type = 0
 column_location = 1
 column_annotation = 3
 
-
-def format_highlight_row(row):
+def write_paragraph_to_text(row, text):
     annotation_type = row[column_annotation_type]
     annotation = row[column_annotation]
     if re.match('highlight', annotation_type, re.IGNORECASE):
-        return annotation
+        return text + '\n\n' + annotation
     elif re.match('note', annotation_type, re.IGNORECASE):
-        return '--' + annotation + '--'
+        return  text + '/*' + annotation + '*/'
 
-
-def write_paragraph_to_text(paragraph, text):
-    return text + '\n' + paragraph + '\n'
 
 
 def extract_highlights(highlights_file):
@@ -33,8 +29,7 @@ def extract_highlights(highlights_file):
             if i < start_line:
                 continue
             else:
-                annnotation = format_highlight_row(row)
-                output_text = write_paragraph_to_text(annnotation, output_text)
+                output_text = write_paragraph_to_text(row, output_text)
 
     return output_text
 
